@@ -579,7 +579,7 @@ def rule_bar_html(name, score, weight):
     <div class="rule-bar-fill" style="width:{pct}%;background:{color};"></div>
   </div>
   <div class="rule-val">{score:.2f}</div>
-  <div style="font-family:var(--mono);font-size:0.65rem;color:#64748b;
+  <div style="font-family:var(--mono);font-size:0.65rem;color:#FFFFFF;
        width:44px;flex-shrink:0;">×{weight}</div>
 </div>"""
 
@@ -635,7 +635,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("""
     <div style="font-family:'Space Mono',monospace;font-size:0.65rem;
-         color:#64748b;line-height:1.9;">
+         color:#FFFFFF;line-height:1.9;">
         Model: Stacking Ensemble<br>
         Dataset: B3DB (n=1,058)<br>
         Test R²: 0.4783 | Q²_ext: 0.4784<br>
@@ -740,7 +740,7 @@ if run and smiles_input.strip():
                 </div>
                 <div style="font-family:'Space Mono',monospace;font-size:1rem;
                      font-weight:700;color:{c};">{res['bbb_class']}</div>
-                <div style="font-size:0.82rem;color:#94a3b8;margin-top:0.4rem;">
+                <div style="font-size:0.82rem;color:#FFFFFF;margin-top:0.4rem;">
                     {res['bbb_note']}
                 </div>
             </div>
