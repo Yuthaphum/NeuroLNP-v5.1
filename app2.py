@@ -75,7 +75,7 @@ h1, h2, h3 { font-family: var(--sans) !important; font-weight: 800 !important; }
 }
 /* section header ใน sidebar */
 .stSidebar .stMarkdown strong {
-    color: #00d4ff !important;
+    color: ##FFFFFF !important;
     font-size: 0.85rem !important;
 }
 /* selectbox, slider labels */
@@ -86,7 +86,11 @@ h1, h2, h3 { font-family: var(--sans) !important; font-weight: 800 !important; }
 }
 /* slider track */
 .stSidebar [data-baseweb="slider"] [role="slider"] {
-    background: var(--accent) !important;
+    background: #0f172a !important;
+    border: 2px solid #334155 !important;
+}
+.stSidebar [data-baseweb="slider"] [data-testid="stSlider"] div[style*="background"] {
+    background: #1e293b !important;
 }
 /* selectbox background */
 .stSidebar [data-baseweb="select"] > div {
@@ -149,7 +153,7 @@ h1, h2, h3 { font-family: var(--sans) !important; font-weight: 800 !important; }
     border-left: 3px solid var(--success);
     border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;
 }
-.card-success * { color: #d1fae5 !important; }
+.card-success * { color: #000000 !important; }
 .card-success .card-header { color: #34d399 !important; font-weight: 700; }
 
 .card-warn {
@@ -158,7 +162,7 @@ h1, h2, h3 { font-family: var(--sans) !important; font-weight: 800 !important; }
     border-left: 3px solid var(--warn);
     border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;
 }
-.card-warn * { color: #fef3c7 !important; }
+.card-warn * { color: #000000 !important; }
 .card-warn .card-header { color: #fbbf24 !important; font-weight: 700; }
 
 .card-danger {
@@ -167,7 +171,7 @@ h1, h2, h3 { font-family: var(--sans) !important; font-weight: 800 !important; }
     border-left: 3px solid var(--danger);
     border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;
 }
-.card-danger * { color: #fee2e2 !important; }
+.card-danger * { color: #000000 !important; }
 .card-danger .card-header { color: #f87171 !important; font-weight: 700; }
 
 /* ── Score display ──────────────────────────────────────────────────────── */
@@ -579,7 +583,7 @@ def rule_bar_html(name, score, weight):
     <div class="rule-bar-fill" style="width:{pct}%;background:{color};"></div>
   </div>
   <div class="rule-val">{score:.2f}</div>
-  <div style="font-family:var(--mono);font-size:0.65rem;color:#FFFFFF;
+  <div style="font-family:var(--mono);font-size:0.65rem;color:#64748b;
        width:44px;flex-shrink:0;">×{weight}</div>
 </div>"""
 
@@ -635,7 +639,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("""
     <div style="font-family:'Space Mono',monospace;font-size:0.65rem;
-         color:#FFFFFF;line-height:1.9;">
+         color:#64748b;line-height:1.9;">
         Model: Stacking Ensemble<br>
         Dataset: B3DB (n=1,058)<br>
         Test R²: 0.4783 | Q²_ext: 0.4784<br>
@@ -740,7 +744,7 @@ if run and smiles_input.strip():
                 </div>
                 <div style="font-family:'Space Mono',monospace;font-size:1rem;
                      font-weight:700;color:{c};">{res['bbb_class']}</div>
-                <div style="font-size:0.82rem;color:#FFFFFF;margin-top:0.4rem;">
+                <div style="font-size:0.82rem;color:#94a3b8;margin-top:0.4rem;">
                     {res['bbb_note']}
                 </div>
             </div>
