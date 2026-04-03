@@ -321,8 +321,7 @@ def mol_to_image_base64(smiles: str, size: int = 300) -> str | None:
             return None
         from rdkit.Chem.Draw import rdMolDraw2D
         drawer = rdMolDraw2D.MolDraw2DSVG(size, size)
-        drawer.drawOptions().backgroundColour = (0.067, 0.086, 0.102, 1)  # #111827
-        drawer.drawOptions().bondLineWidth = 2.0
+        drawer.drawOptions().backgroundColour = (1, 1, 1, 1)  # white        drawer.drawOptions().bondLineWidth = 2.0
         drawer.DrawMolecule(mol)
         drawer.FinishDrawing()
         svg = drawer.GetDrawingText()
