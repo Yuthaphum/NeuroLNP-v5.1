@@ -255,6 +255,11 @@ label { color: var(--text) !important; font-size: 0.85rem !important; }
 .stExpander summary span {
     color: #FFFFFF !important;
 }
+.stExpander[open] summary,
+.stExpander[open] summary p,
+.stExpander[open] summary span {
+    color: #000000 !important;
+}
 hr { border-color: var(--border) !important; }
 </style>
 """, unsafe_allow_html=True)
