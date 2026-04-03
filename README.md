@@ -1,10 +1,3 @@
 # NeuroLNP-v5.1
 Hyybrid AI Platform for Brain-Targeted LNP Design
 
-streamlit>=1.32.0
-rdkit>=2023.9.1
-scikit-learn>=1.4.0
-xgboost>=2.0.0
-pandas>=2.0.0
-numpy>=1.26.0
-scipy>=1.12.0
