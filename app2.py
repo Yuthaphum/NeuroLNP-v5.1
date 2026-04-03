@@ -249,7 +249,13 @@ label { color: var(--text) !important; font-size: 0.85rem !important; }
     background: var(--surface) !important;
     border: 1px solid var(--border) !important; border-radius: 10px !important;
 }
-hr { border-color: #000000 !important; }
+.stExpander summary,
+.stExpander summary p,
+.stExpander [data-testid="stExpanderToggleIcon"],
+.stExpander summary span {
+    color: #FFFFFF !important;
+}
+hr { border-color: var(--border) !important; }
 </style>
 """, unsafe_allow_html=True)
 
