@@ -253,7 +253,7 @@ label { color: var(--text) !important; font-size: 0.85rem !important; }
 .stExpander summary p,
 .stExpander [data-testid="stExpanderToggleIcon"],
 .stExpander summary span {
-    color: #FFFFFF !important;
+    color: #CCCCCC !important;
 }
 hr { border-color: var(--border) !important; }
 </style>
@@ -891,13 +891,6 @@ if run and smiles_input.strip():
 
         # ── Row 3: Molecular Features ─────────────────────────────────────────
         with st.expander("🧪 Molecular Features (ML Input)", expanded=False):
-            st.markdown("""
-            <style>
-            .stExpander[aria-expanded="true"] summary span {
-                color: #000000 !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
             feats = res['feats']
             cols  = st.columns(6)
             for col_st, label, key in [
