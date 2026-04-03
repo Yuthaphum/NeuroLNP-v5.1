@@ -898,7 +898,7 @@ if run and smiles_input.strip():
                 v = feats.get(key, 0)
                 col_st.markdown(f"""
                 <div class="metric-box">
-                    <div class="metric-val">{v:.1f if isinstance(v,float) else v}</div>
+                    <div class="metric-val">{round(v,1) if isinstance(v,float) else v}</div>
                     <div class="metric-lbl">{label}</div>
                 </div>
                 """, unsafe_allow_html=True)
