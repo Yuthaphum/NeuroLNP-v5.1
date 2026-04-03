@@ -549,11 +549,19 @@ def apply_expert_rules(
 
 @st.cache_resource
 def load_model():
-    """โหลด model และ metadata (cache ไว้ ไม่ต้องโหลดซ้ำ)"""
-    model_path = 'models/neurolnp_best_model.pkl'
-    meta_path  = 'models/neurolnp_benchmark_results.json'
-    if not os.path.exists(model_path) or not os.path.exists(meta_path):
+    import os
+    # หาไฟล์จาก path ของ app2.py เสมอ ไม่ว่าจะรันที่ไหน
+    BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(BASE_DIR, 'models', 'neurolnp_best_model.pkl')
+    meta_path  = os.path.join(BASE_DIR, 'models', 'neurolnp_benchmark_results.json')
+
+    if not os.path.exists(model_path):
+        st.error(f"❌ ไม่พบ model ที่: {model_path}")
         return None, None
+    if not os.path.exists(meta_path):
+        st.error(f"❌ ไม่พบ metadata ที่: {meta_path}")
+        return None, None
+
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
     with open(meta_path, encoding='utf-8') as f:
