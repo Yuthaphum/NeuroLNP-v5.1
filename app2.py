@@ -259,7 +259,9 @@ hr { border-color: var(--border) !important; }
 </style>
 """, unsafe_allow_html=True)
 
-
+# Session state
+if 'smiles' not in st.session_state:
+    st.session_state.smiles = "Cn1c(=O)c2c(ncn2C)n(c1=O)C"
 # =============================================================================
 # Helper: Molecular Features
 # =============================================================================
@@ -676,28 +678,38 @@ if model is None:
     st.stop()
 
 # Input row
+ex_map = {
+    "Caffeine":  "Cn1c(=O)c2c(ncn2C)n(c1=O)C",
+    "Diazepam":  "CN1C(=O)CN=C(c2ccccc2)c2cc(Cl)ccc21",
+    "Aspirin":   "CC(=O)Oc1ccccc1C(=O)O",
+    "Ibuprofen": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
+}
+
 col_input, col_ex = st.columns([3, 1])
-with col_input:
-    st.markdown("""<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
-         color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
-         letter-spacing:0.08em;">SMILES Input — Lipid Component</div>""",
-         unsafe_allow_html=True)
-    smiles_input = st.text_area("SMILES", value="Cn1c(=O)c2c(ncn2C)n(c1=O)C",
-                                 height=80, label_visibility="collapsed")
 with col_ex:
     st.markdown("""<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
          color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
          letter-spacing:0.08em;">ตัวอย่าง</div>""", unsafe_allow_html=True)
     example = st.selectbox("ex", label_visibility="collapsed",
         options=["— เลือก —","Caffeine","Diazepam","Aspirin","Ibuprofen"])
-    ex_map = {
-        "Caffeine":  "Cn1c(=O)c2c(ncn2C)n(c1=O)C",
-        "Diazepam":  "CN1C(=O)CN=C(c2ccccc2)c2cc(Cl)ccc21",
-        "Aspirin":   "CC(=O)Oc1ccccc1C(=O)O",
-        "Ibuprofen": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
-    }
+    # ★ อัปเดต session_state ทันทีที่เลือก
     if example != "— เลือก —":
-        smiles_input = ex_map[example]
+        st.session_state.smiles = ex_map[example]
+
+with col_input:
+    st.markdown("""<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
+         color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
+         letter-spacing:0.08em;">SMILES Input — Lipid Component</div>""",
+         unsafe_allow_html=True)
+    # ★ ใช้ session_state เป็น value
+    smiles_input = st.text_area("SMILES",
+        value=st.session_state.smiles,
+        height=80,
+        label_visibility="collapsed",
+        key="smiles_input_box",
+    )
+    # ★ sync กลับถ้าพิมพ์เอง
+    st.session_state.smiles = smiles_input
 
 run = st.button("⚡  ANALYZE LNP")
 
