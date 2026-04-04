@@ -685,19 +685,27 @@ ex_map = {
     "Ibuprofen": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
 }
 
-example = st.selectbox("ตัวอย่างสาร",
-    options=["— เลือก —","Caffeine","Diazepam","Aspirin","Ibuprofen"])
+st.markdown("""
+<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
+     color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
+     letter-spacing:0.08em;">
+    SMILES Input — ใส่โครงสร้างโมเลกุลของ lipid ที่ต้องการทดสอบ
+</div>
+""", unsafe_allow_html=True)
 
-if example != "— เลือก —":
-    st.session_state.smiles = ex_map[example]
+smiles_input = st.text_area("SMILES", value="Cn1c(=O)c2c(ncn2C)n(c1=O)C",
+                             height=80, label_visibility="collapsed")
 
-# ★ text_area อยู่หลัง selectbox เสมอ จึงได้ค่าใหม่แน่นอน
-smiles_input = st.text_area("SMILES Input — Lipid Component",
-    value=st.session_state.smiles,
-    height=80,
-    key="smiles_input_box",
-)
-st.session_state.smiles = smiles_input
+st.markdown("""
+<div style="font-family:'Space Mono',monospace;font-size:0.72rem;
+     color:#475569;margin-top:0.3rem;">
+    💡 ยังไม่มี SMILES? ดูตัวอย่างด้านล่าง แล้ว copy ไปวางใน input
+</div>
+""", unsafe_allow_html=True)
+
+with st.expander("📋 SMILES ตัวอย่าง — คลิกเพื่อ copy"):
+    for name, smi in ex_map.items():
+        st.code(f"{name}: {smi}", language=None)
 
 run = st.button("⚡  ANALYZE LNP")
 
