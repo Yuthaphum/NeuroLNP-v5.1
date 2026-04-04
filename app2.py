@@ -925,7 +925,7 @@ st.markdown("""
 <div style="margin-top:3rem;padding-top:1rem;border-top:1px solid #1e2d40;
      font-family:'Space Mono',monospace;font-size:0.68rem;color:#334155;
      text-align:center;line-height:2.2;">
-    NeuroLNP v5.2 · Hybrid AI Platform <br>
+    NeuroLNP v5.2 · Hybrid AI Platform · Suankularb Wittayalai School<br>
     ML: Stacking Ensemble (RF+GBR+SVR→Ridge) · B3DB (n=1,058) · Test R²=0.4783<br>
     Expert Rules: Carbon Tail · PEG Dilemma · Particle Properties · AChR Targeting<br>
     For research purposes only · Not for clinical use
