@@ -685,31 +685,19 @@ ex_map = {
     "Ibuprofen": "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
 }
 
-col_input, col_ex = st.columns([3, 1])
-with col_ex:
-    st.markdown("""<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
-         color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
-         letter-spacing:0.08em;">ตัวอย่าง</div>""", unsafe_allow_html=True)
-    example = st.selectbox("ex", label_visibility="collapsed",
-        options=["— เลือก —","Caffeine","Diazepam","Aspirin","Ibuprofen"])
-    # ★ อัปเดต session_state ทันทีที่เลือก
-    if example != "— เลือก —":
-        st.session_state.smiles = ex_map[example]
+example = st.selectbox("ตัวอย่างสาร",
+    options=["— เลือก —","Caffeine","Diazepam","Aspirin","Ibuprofen"])
 
-with col_input:
-    st.markdown("""<div style="font-family:'Space Mono',monospace;font-size:0.75rem;
-         color:#64748b;margin-bottom:0.3rem;text-transform:uppercase;
-         letter-spacing:0.08em;">SMILES Input — Lipid Component</div>""",
-         unsafe_allow_html=True)
-    # ★ ใช้ session_state เป็น value
-    smiles_input = st.text_area("SMILES",
-        value=st.session_state.smiles,
-        height=80,
-        label_visibility="collapsed",
-        key="smiles_input_box",
-    )
-    # ★ sync กลับถ้าพิมพ์เอง
-    st.session_state.smiles = smiles_input
+if example != "— เลือก —":
+    st.session_state.smiles = ex_map[example]
+
+# ★ text_area อยู่หลัง selectbox เสมอ จึงได้ค่าใหม่แน่นอน
+smiles_input = st.text_area("SMILES Input — Lipid Component",
+    value=st.session_state.smiles,
+    height=80,
+    key="smiles_input_box",
+)
+st.session_state.smiles = smiles_input
 
 run = st.button("⚡  ANALYZE LNP")
 
